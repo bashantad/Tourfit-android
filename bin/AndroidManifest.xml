@@ -40,9 +40,8 @@
         </activity>
         <activity android:name="com.example.tourfit.ShowPlacesActivity" >
         </activity>
-        <activity android:name=".DisplayMessageActivity" >
+        <activity android:name="com.example.locationtrackingexample.DisplayMessageActivity" >
         </activity>
-        
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -51,6 +50,14 @@
         <activity
             android:name="com.example.tourfit.DisplayMessageActivity"
             android:label="@string/title_activity_display_message" >
+        </activity>
+        <activity
+            android:name="com.example.tourfit.PoiSelectionActivity"
+            android:label="@string/title_activity_poi_selection" >
+        </activity>
+        <activity
+            android:name="com.example.tourfit.ShowPoiActivity"
+            android:label="@string/title_activity_show_poi" >
         </activity>
     </application>
 

@@ -1,11 +1,14 @@
 package com.example.tourfit;
 import java.util.ArrayList;
 
+import org.w3c.dom.Document;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -23,6 +26,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
  *  This class is used to search places using Places API using keywords like police,hospital etc.
@@ -37,10 +42,11 @@ public class ShowPlacesActivity extends Activity {
 	private Location loc;
 	private String typeOfPlace;
 	private double radiusNearby;
+	private GMapV2Direction md;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_search_main);
 		Bundle extras = getIntent().getExtras();
 		typeOfPlace = extras.getString("EXTRA_PLACE");
 		radiusNearby = Double.parseDouble(extras.getString("EXTRA_RADIUS"));
@@ -89,6 +95,13 @@ public class ShowPlacesActivity extends Activity {
 			if (dialog.isShowing()) {
 				dialog.dismiss();
 			}
+			LatLng cll = new LatLng(loc.getLatitude(), 
+            		loc.getLongitude());   
+            // see more on Marker: https://developers.google.com/maps/documentation/android/reference/com/google/android/gms/maps/model/Marker
+            mMap.addMarker(new MarkerOptions()
+            .position(cll)
+            .title("Current Location")
+            );
 			for (int i = 0; i < result.size(); i++) {
 				mMap.addMarker(new MarkerOptions()
 						.title(result.get(i).getName())
@@ -98,6 +111,35 @@ public class ShowPlacesActivity extends Activity {
 						.icon(BitmapDescriptorFactory
 								.fromResource(R.drawable.pin))
 						.snippet(result.get(i).getVicinity()));
+				LatLng tempLoc = new LatLng(result.get(i).getLatitude(), result.get(i).getLongitude());
+				md = new GMapV2Direction(cll, tempLoc, GMapV2Direction.MODE_WALKING);
+				md.execute();
+				Document doc = null;
+				// Document doc = md.getDocument(cll, zll,
+				// GMapV2Direction.MODE_DRIVING);
+				try {
+					// get the result from the asynctask returned by Google,
+					// wait if necessary
+					doc = md.get();
+
+					// now process/parse the results from Google
+					ArrayList<LatLng> directionPoint = md.getDirection(doc);
+
+					// here, draw the lines based on the direction points
+					PolylineOptions rectLine = new PolylineOptions().width(3)
+							.color(Color.BLUE);
+
+					for (int j = 0; j < directionPoint.size(); j++) {
+						rectLine.add(directionPoint.get(j));
+					}
+					Polyline polylin = mMap.addPolyline(rectLine);
+
+				} catch (Exception e) {
+					// just ignore here, possible exceptions thrown by the
+					// md.get() call:
+					// see
+					// http://developer.android.com/reference/android/os/AsyncTask.html#get()
+				}
 			}
 			CameraPosition cameraPosition = new CameraPosition.Builder()
 					.target(new LatLng(result.get(0).getLatitude(), result

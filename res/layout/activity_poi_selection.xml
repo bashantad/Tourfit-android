@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <CheckBox android:id="@+id/poi0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poi0"
+        android:onClick="onCheckboxClicked"/>
+    
+    <CheckBox android:id="@+id/poi1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poi1"
+        android:onClick="onCheckboxClicked"/>
+    
+    
+    <CheckBox android:id="@+id/poi2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poi2"
+        android:onClick="onCheckboxClicked"/>
+    
+    <CheckBox android:id="@+id/poi3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poi3"
+        android:onClick="onCheckboxClicked"/>
+    
+    <CheckBox android:id="@+id/poi4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poi4"
+        android:onClick="onCheckboxClicked"/>
+    
+    <CheckBox android:id="@+id/poi5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poi5"
+        android:onClick="onCheckboxClicked"/>
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_selected_poi"
+        android:onClick="showOnMap" />
+    
+</LinearLayout>

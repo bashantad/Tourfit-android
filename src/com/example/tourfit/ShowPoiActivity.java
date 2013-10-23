@@ -1,10 +1,4 @@
 package com.example.tourfit;
-// Cobbled together from http://www.truiton.com/2013/05/android-mapfragment-example,
-// from http://stackoverflow.com/questions/16262837/how-to-draw-route-in-google-maps-api-v2-from-my-location/16271683#16271683
-// and from http://developer.android.com/training/location/retrieve-current.html
-// S.W. Loke 2013
-// Tested on a Nexus 7 
-
 import java.util.ArrayList;
 
 import org.w3c.dom.Document;
@@ -13,15 +7,13 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.locationtrackingexample.R;
@@ -38,7 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class MainActivity extends Activity  implements
+public class ShowPoiActivity extends Activity  implements
    GooglePlayServicesClient.ConnectionCallbacks,
    GooglePlayServicesClient.OnConnectionFailedListener {
    
@@ -46,12 +38,14 @@ public class MainActivity extends Activity  implements
     private LocationClient mLocationClient;
     GoogleMap mMap;
     GMapV2Direction md;
-    
+    public final static ArrayList<Poi> poiList = new ArrayList<Poi>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_main);
-		
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		Bundle extras = new Bundle();
+		list = extras.getIntegerArrayList("EXTRA");
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                  .getMap();
         /*
@@ -59,17 +53,9 @@ public class MainActivity extends Activity  implements
          * handle callbacks.
          */
         mLocationClient = new LocationClient(this, this, this);
-        
-        
+        getLocation();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.my_main, menu);
-		return true;
-	}
-	
     /*
      * Called when the Activity is restarted, even before it becomes visible.
      */
@@ -137,12 +123,6 @@ public class MainActivity extends Activity  implements
         }
     }
 
-    public void selectPois(View v)
-    {
-    	Intent intent = new Intent(this, PoiSelectionActivity.class);
-    	startActivity(intent);
-    }
-    
     /**
      * Invoked by the "Get Location" button.
      *
@@ -150,13 +130,13 @@ public class MainActivity extends Activity  implements
      *
      * @param v The view object associated with this method, in this case a Button.
      */
-    public void getLocation(View v) {
+    public void getLocation() {
 
         // If Google Play Services is available
         if (servicesConnected()) {
 
             // Get the current location
-            Location currentLocation = mLocationClient.getLastLocation();
+            Location currentLocation = getCurrentLocation();
 
             // show location in std out
             System.out.println("GPS coordinates:"+currentLocation.getLatitude()+", "+
@@ -176,15 +156,8 @@ public class MainActivity extends Activity  implements
             // for details, see https://developers.google.com/maps/documentation/android/views
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cll, 11));
             
-            
-            // see https://developers.google.com/maps/documentation/android/shapes
-            // for marker configuration:
-            // see https://developers.google.com/maps/documentation/android/reference/com/google/android/gms/maps/model/BitmapDescriptor
-            
-            
-            
-            // create the path/line           
-            ArrayList<Poi> poiList = new ArrayList<Poi>();
+         // create the path/line           
+            //ArrayList<Poi> poiList = new ArrayList<Poi>();
             Poi p1 = new Poi(-37.7838757, 144.9515533, "Melbourne Zoo");
             Poi p2 = new Poi(-37.818616,144.957558, "Rialto Tower");
             Poi p3 = new Poi(-37.812649,144.980925, "Fitzroy Gardens");
@@ -199,7 +172,8 @@ public class MainActivity extends Activity  implements
             poiList.add(p6);
             
             
-			for (Poi poi : poiList) {
+            
+            for (Poi poi : poiList) {
 				LatLng tempLoc = new LatLng(poi.getLatitude(), poi.getLongitude());
             	mMap.addMarker(
             			new MarkerOptions()
@@ -208,23 +182,13 @@ public class MainActivity extends Activity  implements
                         .title(poi.getTitle())
             			);
             	md = new GMapV2Direction(cll, tempLoc, GMapV2Direction.MODE_WALKING);
-				// fire an asynctask with an instance of GMapV2direction to ask
-				// Google for
-				// directions
 				md.execute();
 
 				Document doc = null;
-				// Document doc = md.getDocument(cll, zll,
-				// GMapV2Direction.MODE_DRIVING);
 				try {
-					// get the result from the asynctask returned by Google,
-					// wait if necessary
 					doc = md.get();
 
-					// now process/parse the results from Google
 					ArrayList<LatLng> directionPoint = md.getDirection(doc);
-
-					// here, draw the lines based on the direction points
 					PolylineOptions rectLine = new PolylineOptions().width(3)
 							.color(Color.BLUE);
 
@@ -234,10 +198,7 @@ public class MainActivity extends Activity  implements
 					Polyline polylin = mMap.addPolyline(rectLine);
 
 				} catch (Exception e) {
-					// just ignore here, possible exceptions thrown by the
-					// md.get() call:
-					// see
-					// http://developer.android.com/reference/android/os/AsyncTask.html#get()
+					//nothing to do for now
 				}
 
 				// show current coordinates,etc in a toast
@@ -255,22 +216,16 @@ public class MainActivity extends Activity  implements
 		}
     }
     
-    public void searchPlaces(View v)
-    {
-    	//Intent intent = new Intent(this, DisplayMessageActivity.class);
-    	
-    	Intent intent = new Intent(this, ShowPlacesActivity.class);
-    	EditText searchType = (EditText) findViewById(R.id.search_type);
-    	EditText searchRadius = (EditText) findViewById(R.id.search_radius);
-    	String typeText = searchType.getText().toString();
-    	String radiusText = searchRadius.getText().toString();
-    	Bundle extras = new Bundle();
-    	extras.putString("EXTRA_PLACE",typeText);
-    	extras.putString("EXTRA_RADIUS",radiusText);
-    	intent.putExtras(extras);
-    	startActivity(intent);
-    }
     
+    private Location getCurrentLocation() {
+    	LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+		String provider = locationManager
+				.getBestProvider(new Criteria(), false);
+
+		Location location = locationManager.getLastKnownLocation(provider);
+		return location;
+	}
     
     /*
      * Called by Location Services when the request to connect the
@@ -332,18 +287,6 @@ public class MainActivity extends Activity  implements
             showErrorDialog(connectionResult.getErrorCode());
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     /**
