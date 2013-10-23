@@ -59,4 +59,9 @@
         android:layout_height="wrap_content"
         android:text="@string/indoor_position" 
 	    android:onClick="indoorPosition" />
+	<Button 
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/track_user" 
+	    android:onClick="trackUser" />
 </LinearLayout>

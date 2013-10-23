@@ -3,7 +3,6 @@
 
     <string name="app_name">Tourfit Application</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="showMyLocBtn">My GPS Coordinates</string>
 
     <string-array name="places">
@@ -108,4 +107,14 @@
     <string name="title_activity_show_img3">Third Image</string>
     <string name="indoor_position">Indoor Positioning</string>
     <string name="title_activity_indoor_position">Indoor Positioning</string>
+    <string name="track_user">Track the User</string>
+    <string name="app_name">TourFit</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Tap two locations in the map</string>
+    <string name="origin">origin latitude longitude</string>
+    <string name="destination">Destination latitude longitude</string>
+    <string name="caloriesconsumed">calories required to travel</string>
+    <string name="str_tv_distance_time">Distance</string>
+    <string name="title_activity_tracker_user">Tracking location of user</string>
+    
 </resources>

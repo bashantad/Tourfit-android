@@ -79,6 +79,11 @@
             android:name="com.example.tourfit.ShowImg3"
             android:label="@string/title_activity_show_img3" >
         </activity>
+        
+        <activity 
+            android:name="com.example.tourfit.TrackingUser"
+            android:label="@string/title_activity_tracker_user">
+        </activity>
     </application>
 
 </manifest>
