@@ -190,12 +190,14 @@ containing a value of this type.
         public static final int pin=0x7f02001d;
     }
     public static final class id {
-        public static final int action_settings=0x7f050006;
+        public static final int action_settings=0x7f050008;
         public static final int hybrid=0x7f050004;
         public static final int map=0x7f050005;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
+        public static final int search_radius=0x7f050007;
+        public static final int search_type=0x7f050006;
         public static final int terrain=0x7f050003;
     }
     public static final class layout {
@@ -208,16 +210,16 @@ containing a value of this type.
         public static final int my_main=0x7f0a0001;
     }
     public static final class string {
-        public static final int IO_Exception_getFromLocation=0x7f06003c;
+        public static final int IO_Exception_getFromLocation=0x7f06003e;
         public static final int action_settings=0x7f060028;
-        public static final int address=0x7f060032;
+        public static final int address=0x7f060034;
         /**  User interface labels and strings 
  Address format 
          */
-        public static final int address_output_string=0x7f06002f;
-        public static final int app_description=0x7f06002e;
+        public static final int address_output_string=0x7f060031;
+        public static final int app_description=0x7f060030;
         public static final int app_name=0x7f060027;
-        public static final int app_tag=0x7f06002d;
+        public static final int app_tag=0x7f06002f;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -310,9 +312,9 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f060012;
         /**  Messages 
          */
-        public static final int connected=0x7f060033;
+        public static final int connected=0x7f060035;
         public static final int connection_error_code=0x7f060019;
-        public static final int connection_error_code_unknown=0x7f060034;
+        public static final int connection_error_code_unknown=0x7f060036;
         public static final int connection_error_disabled=0x7f06001a;
         public static final int connection_error_internal=0x7f06001b;
         public static final int connection_error_invalid=0x7f06001c;
@@ -326,45 +328,47 @@ containing a value of this type.
         public static final int connection_error_outdated=0x7f060024;
         public static final int connection_error_sign_in_required=0x7f060025;
         public static final int connection_error_unknown=0x7f060026;
-        public static final int connection_failed=0x7f060035;
-        public static final int disconnected=0x7f060036;
-        public static final int get_address=0x7f060037;
-        public static final int get_location=0x7f060038;
+        public static final int connection_failed=0x7f060037;
+        public static final int disconnected=0x7f060038;
+        public static final int get_address=0x7f060039;
+        public static final int get_location=0x7f06003a;
         public static final int hello_world=0x7f060029;
-        public static final int illegal_argument_exception=0x7f060039;
-        public static final int invalid_action=0x7f06003a;
-        public static final int invalid_integer_id=0x7f06003b;
+        public static final int illegal_argument_exception=0x7f06003b;
+        public static final int invalid_action=0x7f06003c;
+        public static final int invalid_integer_id=0x7f06003d;
         /**  Latitude, longitude format 
          */
-        public static final int latitude_longitude=0x7f060030;
+        public static final int latitude_longitude=0x7f060032;
         /**  Labels 
          */
-        public static final int latlng=0x7f060031;
-        public static final int location_requested=0x7f06003d;
-        public static final int location_update_error=0x7f06003f;
-        public static final int location_update_error_detail=0x7f060040;
-        public static final int location_update_missing_update=0x7f060041;
-        public static final int location_updated=0x7f06003e;
-        public static final int location_updates_stopped=0x7f060042;
-        public static final int log_new_location=0x7f060043;
-        public static final int no_address_found=0x7f060044;
-        public static final int no_connection=0x7f060045;
-        public static final int no_geocoder_available=0x7f060046;
-        public static final int no_location_available=0x7f060047;
-        public static final int no_resolution=0x7f060049;
-        public static final int periodic_update_stop=0x7f06004a;
-        public static final int play_services_available=0x7f06004b;
-        public static final int request_location_updates_in_progress=0x7f06004c;
-        public static final int resolved=0x7f060048;
+        public static final int latlng=0x7f060033;
+        public static final int location_requested=0x7f06003f;
+        public static final int location_update_error=0x7f060041;
+        public static final int location_update_error_detail=0x7f060042;
+        public static final int location_update_missing_update=0x7f060043;
+        public static final int location_updated=0x7f060040;
+        public static final int location_updates_stopped=0x7f060044;
+        public static final int log_new_location=0x7f060045;
+        public static final int no_address_found=0x7f060046;
+        public static final int no_connection=0x7f060047;
+        public static final int no_geocoder_available=0x7f060048;
+        public static final int no_location_available=0x7f060049;
+        public static final int no_resolution=0x7f06004b;
+        public static final int periodic_update_stop=0x7f06004c;
+        public static final int play_services_available=0x7f06004d;
+        public static final int request_location_updates_in_progress=0x7f06004e;
+        public static final int resolved=0x7f06004a;
         /**  Application identifiers 
          */
-        public static final int searchPlaces=0x7f06002b;
+        public static final int searchPlaces=0x7f06002d;
+        public static final int search_radius=0x7f06002c;
+        public static final int search_type=0x7f06002b;
         public static final int showMyLocBtn=0x7f06002a;
-        public static final int start_updates=0x7f06004d;
-        public static final int stop_updates=0x7f06004e;
-        public static final int title_activity_display_message=0x7f06002c;
-        public static final int unknown=0x7f06004f;
-        public static final int unknown_activity_request_code=0x7f060050;
+        public static final int start_updates=0x7f06004f;
+        public static final int stop_updates=0x7f060050;
+        public static final int title_activity_display_message=0x7f06002e;
+        public static final int unknown=0x7f060051;
+        public static final int unknown_activity_request_code=0x7f060052;
     }
     public static final class style {
         /** 

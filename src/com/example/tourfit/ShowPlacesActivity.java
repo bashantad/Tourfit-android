@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -34,11 +35,15 @@ public class ShowPlacesActivity extends Activity {
 	private String[] places;
 	private LocationManager locationManager;
 	private Location loc;
-
+	private String typeOfPlace;
+	private double radiusNearby;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Bundle extras = getIntent().getExtras();
+		typeOfPlace = extras.getString("EXTRA_PLACE");
+		radiusNearby = Double.parseDouble(extras.getString("EXTRA_RADIUS"));
 		initCompo();
 		places = getResources().getStringArray(R.array.places);
 		currentLocation();
@@ -52,13 +57,11 @@ public class ShowPlacesActivity extends Activity {
 					public boolean onNavigationItemSelected(int itemPosition,
 							long itemId) {
 						Log.e(TAG,
-								places[itemPosition].toLowerCase().replace("-",
+								typeOfPlace.toLowerCase().replace("-",
 										"_"));
 						if (loc != null) {
 							mMap.clear();
-							new GetPlaces(ShowPlacesActivity.this,
-									places[itemPosition].toLowerCase().replace(
-											"-", "_").replace(" ", "_")).execute();
+							new GetPlaces(ShowPlacesActivity.this, typeOfPlace.toLowerCase().replace("-", "_").replace(" ", "_"), radiusNearby).execute();
 						}
 						return true;
 					}
@@ -72,10 +75,12 @@ public class ShowPlacesActivity extends Activity {
 		private ProgressDialog dialog;
 		private Context context;
 		private String places;
+		private double radius;
 
-		public GetPlaces(Context context, String places) {
+		public GetPlaces(Context context, String places, double radius) {
 			this.context = context;
 			this.places = places;
+			this.radius = radius;
 		}
 
 		@Override
@@ -98,7 +103,7 @@ public class ShowPlacesActivity extends Activity {
 					.target(new LatLng(result.get(0).getLatitude(), result
 							.get(0).getLongitude())) // Sets the center of the map to
 											// Mountain View
-					.zoom(14) // Sets the zoom
+					.zoom(12) // Sets the zoom
 					.tilt(30) // Sets the tilt of the camera to 30 degrees
 					.build(); // Creates a CameraPosition from the builder
 			mMap.animateCamera(CameraUpdateFactory
@@ -119,8 +124,8 @@ public class ShowPlacesActivity extends Activity {
 		protected ArrayList<Place> doInBackground(Void... arg0) {
 			PlacesService service = new PlacesService(
 					"AIzaSyB6TgunMbVSC965qiZHCONuO3nHGQeNd4E");
-			ArrayList<Place> findPlaces = service.findPlaces(loc.getLatitude(), // 28.632808
-					loc.getLongitude(), places); // 77.218276
+			ArrayList<Place> findPlaces = service.findPlaces(loc.getLatitude(), 
+					loc.getLongitude(), places, radius); 
 
 			for (int i = 0; i < findPlaces.size(); i++) {
 
@@ -155,8 +160,8 @@ public class ShowPlacesActivity extends Activity {
 			locationManager.requestLocationUpdates(provider, 0, 0, listener);
 		} else {
 			loc = location;
-			new GetPlaces(ShowPlacesActivity.this, places[0].toLowerCase().replace(
-					"-", "_")).execute();
+			new GetPlaces(ShowPlacesActivity.this, typeOfPlace.toLowerCase().replace(
+					"-", "_"), 1000).execute();
 			Log.e(TAG, "location : " + location);
 		}
 

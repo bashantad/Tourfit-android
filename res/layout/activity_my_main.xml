@@ -16,12 +16,21 @@
         android:onClick="getLocation"
         />
     
-    <Button
-        android:layout_width="fill_parent"
+    <EditText android:id="@+id/search_type"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/searchPlaces"
-        android:onClick="searchPlaces"
+        android:hint="@string/search_type" />
+    <EditText android:id="@+id/search_radius"
+       	android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_radius" 
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/searchPlaces" 
+        android:onClick="searchPlaces"/>
     
     <fragment
         android:id="@+id/map"

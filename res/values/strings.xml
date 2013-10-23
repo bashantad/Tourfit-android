@@ -17,7 +17,8 @@
         <item >Shopping Mall</item>
     </string-array>
 	
-	
+	<string name="search_type">Type of place</string>
+	<string name="search_radius">Distance within in m</string>
 	   <!-- Application identifiers -->
 	 <string name="searchPlaces">Search Places</string>
 	 <string name="title_activity_display_message">My Second Activity</string>

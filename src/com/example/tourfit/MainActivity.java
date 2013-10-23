@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.locationtrackingexample.R;
@@ -40,8 +41,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class MainActivity extends Activity  implements
    GooglePlayServicesClient.ConnectionCallbacks,
    GooglePlayServicesClient.OnConnectionFailedListener {
-	
-	  // Stores the current instantiation of the location client in this object
+   
+	// Stores the current instantiation of the location client in this object
     private LocationClient mLocationClient;
     GoogleMap mMap;
     GMapV2Direction md;
@@ -178,20 +179,12 @@ public class MainActivity extends Activity  implements
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cll, 11));
             
             
-            //just for fun, show path from current location to the Melbourne Zoo
-            // Melbourne zoo has coordinates: 144.9515533 , -37.7838757
             // see https://developers.google.com/maps/documentation/android/shapes
             // for marker configuration:
             // see https://developers.google.com/maps/documentation/android/reference/com/google/android/gms/maps/model/BitmapDescriptor
             
             
             
-            LatLng zll = new LatLng(-37.7838757, 144.9515533);    
-            mMap.addMarker(new MarkerOptions()
-            .position(zll)
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-            .title("Melbourne Zoo")
-            );
             // create the path/line           
             ArrayList<Poi> poiList = new ArrayList<Poi>();
             Poi p1 = new Poi(-37.7838757, 144.9515533, "Melbourne Zoo");
@@ -209,7 +202,6 @@ public class MainActivity extends Activity  implements
             
             
 			for (Poi poi : poiList) {
-				//md = new GMapV2Direction(cll, zll, GMapV2Direction.MODE_WALKING);
 				LatLng tempLoc = new LatLng(poi.getLatitude(), poi.getLongitude());
             	mMap.addMarker(
             			new MarkerOptions()
@@ -268,8 +260,16 @@ public class MainActivity extends Activity  implements
     public void searchPlaces(View v)
     {
     	//Intent intent = new Intent(this, DisplayMessageActivity.class);
-
+    	
     	Intent intent = new Intent(this, ShowPlacesActivity.class);
+    	EditText searchType = (EditText) findViewById(R.id.search_type);
+    	EditText searchRadius = (EditText) findViewById(R.id.search_radius);
+    	String typeText = searchType.getText().toString();
+    	String radiusText = searchRadius.getText().toString();
+    	Bundle extras = new Bundle();
+    	extras.putString("EXTRA_PLACE",typeText);
+    	extras.putString("EXTRA_RADIUS",radiusText);
+    	intent.putExtras(extras);
     	startActivity(intent);
     }
     
