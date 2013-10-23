@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import com.example.locationtrackingexample.R;
 
-public class MainActivity extends Activity {
+public class LauncherActivity extends Activity {
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -132,6 +132,7 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f01000d;
     }
     public static final class color {
+        public static final int black=0x7f04000a;
         public static final int common_action_bar_splitter=0x7f040009;
         /**  Sign-in Button Colors 
          */
@@ -144,8 +145,8 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f04000a;
-        public static final int common_signin_btn_text_light=0x7f04000b;
+        public static final int common_signin_btn_text_dark=0x7f04000b;
+        public static final int common_signin_btn_text_light=0x7f04000c;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -190,35 +191,43 @@ containing a value of this type.
         public static final int pin=0x7f02001d;
     }
     public static final class id {
-        public static final int action_settings=0x7f05000f;
-        public static final int button1=0x7f05000e;
+        public static final int action_settings=0x7f050013;
+        public static final int button1=0x7f05000f;
         public static final int hybrid=0x7f050004;
-        public static final int map=0x7f050007;
+        public static final int map=0x7f050008;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int poi0=0x7f050008;
-        public static final int poi1=0x7f050009;
-        public static final int poi2=0x7f05000a;
-        public static final int poi3=0x7f05000b;
-        public static final int poi4=0x7f05000c;
-        public static final int poi5=0x7f05000d;
+        public static final int poi0=0x7f050009;
+        public static final int poi1=0x7f05000a;
+        public static final int poi2=0x7f05000b;
+        public static final int poi3=0x7f05000c;
+        public static final int poi4=0x7f05000d;
+        public static final int poi5=0x7f05000e;
         public static final int satellite=0x7f050002;
-        public static final int search_radius=0x7f050006;
-        public static final int search_type=0x7f050005;
+        public static final int search_radius=0x7f050007;
+        public static final int search_type=0x7f050006;
         public static final int terrain=0x7f050003;
+        public static final int textView1=0x7f050010;
+        public static final int textView2=0x7f050011;
+        public static final int textView3=0x7f050012;
+        public static final int tv_distance_time=0x7f050005;
     }
     public static final class layout {
         public static final int activity_display_message=0x7f030000;
-        public static final int activity_my_main=0x7f030001;
-        public static final int activity_poi_selection=0x7f030002;
-        public static final int activity_search_main=0x7f030003;
-        public static final int activity_show_poi=0x7f030004;
+        public static final int activity_launcher=0x7f030001;
+        public static final int activity_my_main=0x7f030002;
+        public static final int activity_poi_selection=0x7f030003;
+        public static final int activity_search_main=0x7f030004;
+        public static final int activity_show_places=0x7f030005;
+        public static final int activity_show_poi=0x7f030006;
+        public static final int launcher=0x7f030007;
     }
     public static final class menu {
         public static final int display_message=0x7f0a0000;
-        public static final int my_main=0x7f0a0001;
-        public static final int poi_selection=0x7f0a0002;
-        public static final int show_poi=0x7f0a0003;
+        public static final int launcher=0x7f0a0001;
+        public static final int my_main=0x7f0a0002;
+        public static final int poi_selection=0x7f0a0003;
+        public static final int show_poi=0x7f0a0004;
     }
     public static final class string {
         public static final int IO_Exception_getFromLocation=0x7f060048;
@@ -254,6 +263,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060013;
+        public static final int caloriesconsumed=0x7f060062;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -340,6 +350,7 @@ containing a value of this type.
         public static final int connection_error_sign_in_required=0x7f060025;
         public static final int connection_error_unknown=0x7f060026;
         public static final int connection_failed=0x7f060041;
+        public static final int destination=0x7f060061;
         public static final int disconnected=0x7f060042;
         public static final int displayapi=0x7f060033;
         public static final int get_address=0x7f060043;
@@ -366,6 +377,7 @@ containing a value of this type.
         public static final int no_geocoder_available=0x7f060052;
         public static final int no_location_available=0x7f060053;
         public static final int no_resolution=0x7f060055;
+        public static final int origin=0x7f060060;
         public static final int periodic_update_stop=0x7f060056;
         public static final int play_services_available=0x7f060057;
         public static final int poi0=0x7f06002d;
@@ -380,6 +392,7 @@ containing a value of this type.
         /**  Application identifiers 
          */
         public static final int searchPlaces=0x7f060037;
+        public static final int search_hint=0x7f06005f;
         public static final int search_radius=0x7f060036;
         public static final int search_type=0x7f060035;
         public static final int select_pois=0x7f06002b;
@@ -387,7 +400,9 @@ containing a value of this type.
         public static final int show_selected_poi=0x7f060034;
         public static final int start_updates=0x7f060059;
         public static final int stop_updates=0x7f06005a;
+        public static final int str_tv_distance_time=0x7f060063;
         public static final int title_activity_display_message=0x7f060038;
+        public static final int title_activity_launcher=0x7f060064;
         public static final int title_activity_poi_selection=0x7f06005d;
         public static final int title_activity_show_poi=0x7f06005e;
         public static final int unknown=0x7f06005b;

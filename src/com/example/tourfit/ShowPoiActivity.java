@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.location.Criteria;
@@ -33,19 +34,35 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class ShowPoiActivity extends Activity  implements
    GooglePlayServicesClient.ConnectionCallbacks,
    GooglePlayServicesClient.OnConnectionFailedListener {
-   
+	
 	// Stores the current instantiation of the location client in this object
     private LocationClient mLocationClient;
     GoogleMap mMap;
     GMapV2Direction md;
-    public final static ArrayList<Poi> poiList = new ArrayList<Poi>();
+    private ArrayList<Poi> poiList;
+    private ArrayList<Poi> selectionPoi;
+    private ArrayList<Integer> itemList;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_my_main);
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		Bundle extras = new Bundle();
-		list = extras.getIntegerArrayList("EXTRA");
+		setContentView(R.layout.activity_show_places);
+		assignPoiList();
+		Intent intent = getIntent();
+	    String message = intent.getStringExtra(PoiSelectionActivity.EXTRA_MESSAGE);
+	    Log.d("Message", message);
+	    //if user doesn't select anything, then all the five points will be displayed
+	    if(message.equals("")){
+	    	selectionPoi = poiList;
+	    }else{
+	    	message = message.substring(0, message.length()-1);
+	    	String[] points = message.split(",");
+	    	for(String point: points){
+	    		selectionPoi.add(poiList.get(Integer.parseInt(point)));
+	    		Log.d("points: ", point);
+	    	}
+	    }
+		
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                  .getMap();
         /*
@@ -155,30 +172,13 @@ public class ShowPoiActivity extends Activity  implements
             // set location in the middle of the map, zoom level 11
             // for details, see https://developers.google.com/maps/documentation/android/views
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cll, 11));
-            
-         // create the path/line           
-            //ArrayList<Poi> poiList = new ArrayList<Poi>();
-            Poi p1 = new Poi(-37.7838757, 144.9515533, "Melbourne Zoo");
-            Poi p2 = new Poi(-37.818616,144.957558, "Rialto Tower");
-            Poi p3 = new Poi(-37.812649,144.980925, "Fitzroy Gardens");
-            Poi p4 = new Poi(-37.807394,144.973072, "Royal Exhibition Building and Carlton Gardens");
-            Poi p5 = new Poi(-37.815887,144.94807, "Telstra Dome");
-            Poi p6 = new Poi(-37.8200000, 144.9600000, "Crown Casino Melbourne");
-            poiList.add(p1);
-            poiList.add(p2);
-            poiList.add(p3);
-            poiList.add(p4);
-            poiList.add(p5);
-            poiList.add(p6);
-            
-            
-            
-            for (Poi poi : poiList) {
+           
+            for (Poi poi : selectionPoi) {
 				LatLng tempLoc = new LatLng(poi.getLatitude(), poi.getLongitude());
             	mMap.addMarker(
             			new MarkerOptions()
                         .position(tempLoc)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                         .title(poi.getTitle())
             			);
             	md = new GMapV2Direction(cll, tempLoc, GMapV2Direction.MODE_WALKING);
@@ -203,12 +203,12 @@ public class ShowPoiActivity extends Activity  implements
 
 				// show current coordinates,etc in a toast
 				Context context = getApplicationContext();
-				CharSequence text = "Path to walk from here (GPS coordinates:"
-						+ currentLocation.getLatitude()
-						+ ", " + currentLocation.getLongitude()  + " to " + poi.getTitle();
-				int duration = Toast.LENGTH_LONG;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+//				CharSequence text = "Path to walk from here (GPS coordinates:"
+//						+ currentLocation.getLatitude()
+//						+ ", " + currentLocation.getLongitude()  + " to " + poi.getTitle();
+//				int duration = Toast.LENGTH_LONG;
+//				Toast toast = Toast.makeText(context, text, duration);
+//				toast.show();
 				// Display the current location in the UI
 				// mLatLng.setText(LocationUtils.getLatLng(this,
 				// currentLocation));
@@ -355,7 +355,27 @@ public class ShowPoiActivity extends Activity  implements
             return mDialog;
         }
     }
-
+    
+    
+    //for some reason it didn't work in constructor so had to move it here.
+    public void assignPoiList()
+	{
+    	poiList =  new ArrayList<Poi>();
+    	selectionPoi =  new ArrayList<Poi>();
+    	itemList = new ArrayList<Integer>();
+		Poi p1 = new Poi(-37.7838757, 144.9515533, "Melbourne Zoo");
+        Poi p2 = new Poi(-37.818616,144.957558, "Rialto Tower");
+        Poi p3 = new Poi(-37.812649,144.980925, "Fitzroy Gardens");
+        Poi p4 = new Poi(-37.807394,144.973072, "Royal Exhibition Building and Carlton Gardens");
+        Poi p5 = new Poi(-37.815887,144.94807, "Telstra Dome");
+        Poi p6 = new Poi(-37.8200000, 144.9600000, "Crown Casino Melbourne");
+        poiList.add(p1);
+        poiList.add(p2);
+        poiList.add(p3);
+        poiList.add(p4);
+        poiList.add(p5);
+        poiList.add(p6);
+	}
 
 }
 

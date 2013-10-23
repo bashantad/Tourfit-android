@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">LocationTrackingExample</string>
+    <string name="app_name">Tourfit Application</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="showMyLocBtn">My GPS Coordinates</string>
@@ -20,12 +20,12 @@
 
     <string name="select_pois">Select Point of Interest</string>
     <string name="pois">Display POIS</string>
-    <string name="poi0">POI0</string>
-    <string name="poi1">POI1</string>
-    <string name="poi2">POI2</string>
-    <string name="poi3">POI3</string>
-    <string name="poi4">POI4</string>
-    <string name="poi5">POI5</string>
+    <string name="poi0">Melbourne Zoo</string>
+    <string name="poi1">Rialto Tower</string>
+    <string name="poi2">Fitzroy Gardens</string>
+    <string name="poi3">Royal Exhibition Building and Carlton Gardens</string>
+    <string name="poi4">Telstra Dome</string>
+    <string name="poi5">Crown Casino Melbourne</string>
     <string name="displayapi">Button</string>
     <string name="show_selected_poi">Show in map</string>
     <string name="search_type">Type of place</string>
@@ -79,8 +79,20 @@
     <string name="start_updates">Start Updates</string>
     <string name="stop_updates">Stop Updates</string>
     <string name="unknown">--Unknown--</string>
-    <string name="unknown_activity_request_code">        Received an unknown activity request code %1$d in onActivityResult.</string>
-    <string name="title_activity_poi_selection">PoiSelectionActivity</string>
-    <string name="title_activity_show_poi">ShowPoiActivity</string>
+    <string name="unknown_activity_request_code">Received an unknown activity request code %1$d in onActivityResult.</string>
+    <string name="title_activity_poi_selection">Select your point of interest</string>
+    <string name="title_activity_show_poi">Search Results</string>
+
+    <color name="black">#000000</color>
+    <color name="black">#ccc</color>
+	<string name="search_hint">Search Cafe/Hospital/Atm etc</string>
+    <string name="app_name">TourFit</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Tap two locations in the map</string>
+    <string name="origin">origin latitude longitude</string>
+    <string name="destination">Destination latitude longitude</string>
+    <string name="caloriesconsumed">calories required to travel</string>
+    <string name="str_tv_distance_time">Distance</string>
+    <string name="title_activity_launcher">Tourfit Application</string>
 
 </resources>
