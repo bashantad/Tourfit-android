@@ -21,11 +21,6 @@ import android.location.Location;
 
 import com.example.locationtrackingexample.R;
 
-//import com.example.android.location.R;
-
-/**
- * Defines app-wide constants and utilities
- */
 public final class LocationUtils {
 
     // Debugging tag for the application

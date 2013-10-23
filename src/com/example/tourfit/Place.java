@@ -6,13 +6,7 @@ import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- *  Model class for Places data.
- * 
- * @author Karn Shah
- * @Date   10/3/2013
- *
- */
+
 public class Place {
     private String id;
     private String icon;

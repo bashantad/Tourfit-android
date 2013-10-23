@@ -84,7 +84,8 @@
     <string name="title_activity_show_poi">Search Results</string>
 
     <color name="black">#000000</color>
-    <color name="black">#ccc</color>
+    <color name="black">#cccccc</color>
+    <color name="white">#ffffff</color>
 	<string name="search_hint">Search Cafe/Hospital/Atm etc</string>
     <string name="app_name">TourFit</string>
     <string name="action_settings">Settings</string>

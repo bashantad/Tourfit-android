@@ -145,7 +145,7 @@ public class ShowPlacesActivity extends Activity {
 					.target(new LatLng(result.get(0).getLatitude(), result
 							.get(0).getLongitude())) // Sets the center of the map to
 											// Mountain View
-					.zoom(12) // Sets the zoom
+					.zoom(13) // Sets the zoom
 					.tilt(30) // Sets the tilt of the camera to 30 degrees
 					.build(); // Creates a CameraPosition from the builder
 			mMap.animateCamera(CameraUpdateFactory
