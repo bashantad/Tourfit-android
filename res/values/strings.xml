@@ -86,7 +86,8 @@
     <color name="black">#000000</color>
     <color name="black">#cccccc</color>
     <color name="white">#ffffff</color>
-	<string name="search_hint">Search Cafe/Hospital/Atm etc</string>
+
+    <string name="search_hint">Search Cafe/Hospital/Atm etc</string>
     <string name="app_name">TourFit</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Tap two locations in the map</string>
@@ -95,5 +96,16 @@
     <string name="caloriesconsumed">calories required to travel</string>
     <string name="str_tv_distance_time">Distance</string>
     <string name="title_activity_launcher">Tourfit Application</string>
-
+    <string name="title_activity_show_list">ShowList</string>
+	<string name="indoor_display">Indoor Selection</string>
+    <string name="indoor">Go to Bg114</string>
+    <string name="bg115">Go to BG115</string>
+    <string name="bg116">Go to BG116</string>
+    <string name="img1"></string>
+    <string name="title_activity_show_list">All images</string>
+    <string name="title_activity_show_img">First Image</string>
+    <string name="title_activity_show_img2">Second Image</string>
+    <string name="title_activity_show_img3">Third Image</string>
+    <string name="indoor_position">Indoor Positioning</string>
+    <string name="title_activity_indoor_position">Indoor Positioning</string>
 </resources>

@@ -53,5 +53,10 @@
         android:layout_height="wrap_content"
         android:text="@string/searchPlaces" 
         android:onClick="searchPlaces"/>
-
+	
+	<Button 
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/indoor_position" 
+	    android:onClick="indoorPosition" />
 </LinearLayout>

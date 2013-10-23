@@ -59,6 +59,26 @@
             android:name="com.example.tourfit.ShowPoiActivity"
             android:label="@string/title_activity_show_poi" >
         </activity>
+        <activity
+            android:name="com.example.tourfit.ShowList"
+            android:label="@string/title_activity_show_list" >
+        </activity>
+        <activity
+            android:name="com.example.tourfit.IndoorPositionActivity"
+            android:label="@string/title_activity_indoor_position" >
+        </activity>
+        <activity
+            android:name="com.example.tourfit.ShowImg"
+            android:label="@string/title_activity_show_img" >
+        </activity>
+        <activity
+            android:name="com.example.tourfit.ShowImg2"
+            android:label="@string/title_activity_show_img2" >
+        </activity>
+        <activity
+            android:name="com.example.tourfit.ShowImg3"
+            android:label="@string/title_activity_show_img3" >
+        </activity>
     </application>
 
 </manifest>

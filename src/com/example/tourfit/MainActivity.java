@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.locationtrackingexample.R;
@@ -13,9 +15,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_launcher);
-		
-		
+		setContentView(R.layout.activity_launcher);				
 	}
 
 	/*
@@ -26,7 +26,16 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(this, PoiSelectionActivity.class);
     	startActivity(intent);
     }
-
+    
+    /*
+     * Handle indoor positioning
+     */
+    public void indoorPosition(View v)
+    {
+    	Intent intent = new Intent(this, IndoorPositionActivity.class);
+		startActivity(intent);
+    }
+    
     /*
      * handles search of particular places like cafe, atm, hospital etc
      * uses google places api
