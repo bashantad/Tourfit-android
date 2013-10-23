@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.locationtrackingexample;
+package com.example.tourfit;
 
 import android.content.Context;
 import android.location.Location;
+
+import com.example.locationtrackingexample.R;
 
 //import com.example.android.location.R;
 

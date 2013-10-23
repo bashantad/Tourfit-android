@@ -1,4 +1,4 @@
-package com.example.locationtrackingexample;
+package com.example.tourfit;
 // uses Google's Directions API to return a path
 // Link to Google's Directions API: https://developers.google.com/maps/documentation/directions/
 // for example, try typing into the browser this URL:

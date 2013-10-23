@@ -5,10 +5,22 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 	<string name="showMyLocBtn">My GPS Coordinates</string>
-	
+	<string-array name="places">
+        <item >ATM</item>
+        <item >Bank</item>
+        <item >Cafe</item>
+        <item >Fire-Station</item>
+        <item >Hospital</item>
+        <item >Pharmacy</item>
+        <item >Police</item>
+        <item >Restaurant</item>
+        <item >Shopping Mall</item>
+    </string-array>
 	
 	
 	   <!-- Application identifiers -->
+	 <string name="searchPlaces">Search Places</string>
+	 <string name="title_activity_display_message">My Second Activity</string>
     <string name="app_tag">LocationUpdates</string>
     <string name="app_description">
         Displays current address and current or updated location using Location Services
